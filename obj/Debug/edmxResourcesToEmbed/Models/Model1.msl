@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KURS_PROGRAMIModelStoreContainer" CdmEntityContainer="KURS_PROGRAMIEntities3">
+    <EntitySetMapping Name="Egitmen">
+      <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Egitmen">
+        <MappingFragment StoreEntitySet="Egitmen">
+          <ScalarProperty Name="egitmenID" ColumnName="egitmenID" />
+          <ScalarProperty Name="egitmenAdi" ColumnName="egitmenAdi" />
+          <ScalarProperty Name="egitmenSoyadi" ColumnName="egitmenSoyadi" />
+          <ScalarProperty Name="eEmail" ColumnName="eEmail" />
+          <ScalarProperty Name="eTelNo" ColumnName="eTelNo" />
+          <ScalarProperty Name="ePassword" ColumnName="ePassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Konu">
+      <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Konu">
+        <MappingFragment StoreEntitySet="Konu">
+          <ScalarProperty Name="konuID" ColumnName="konuID" />
+          <ScalarProperty Name="konuAdi" ColumnName="konuAdi" />
+          <ScalarProperty Name="kursID" ColumnName="kursID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kurs">
+      <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Kurs">
+        <MappingFragment StoreEntitySet="Kurs">
+          <ScalarProperty Name="kursID" ColumnName="kursID" />
+          <ScalarProperty Name="kursAdi" ColumnName="kursAdi" />
+          <ScalarProperty Name="fiyat" ColumnName="fiyat" />
+          <ScalarProperty Name="egitmenID" ColumnName="egitmenID" />
+          <ScalarProperty Name="programID" ColumnName="programID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kurs_Programi">
+      <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Kurs_Programi">
+        <MappingFragment StoreEntitySet="Kurs_Programi">
+          <ScalarProperty Name="programID" ColumnName="programID" />
+          <ScalarProperty Name="programAdi" ColumnName="programAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kurs_Programi_Yoneticisi">
+      <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Kurs_Programi_Yoneticisi">
+        <MappingFragment StoreEntitySet="Kurs_Programi_Yoneticisi">
+          <ScalarProperty Name="yoneticiID" ColumnName="yoneticiID" />
+          <ScalarProperty Name="yoneticiAdi" ColumnName="yoneticiAdi" />
+          <ScalarProperty Name="yoneticiSoyadi" ColumnName="yoneticiSoyadi" />
+          <ScalarProperty Name="yEmail" ColumnName="yEmail" />
+          <ScalarProperty Name="yTelNo" ColumnName="yTelNo" />
+          <ScalarProperty Name="yPassword" ColumnName="yPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kursiyer">
+      <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Kursiyer">
+        <MappingFragment StoreEntitySet="Kursiyer">
+          <ScalarProperty Name="kursiyerID" ColumnName="kursiyerID" />
+          <ScalarProperty Name="kursiyerAdi" ColumnName="kursiyerAdi" />
+          <ScalarProperty Name="kursiyerSoyadi" ColumnName="kursiyerSoyadi" />
+          <ScalarProperty Name="kEmail" ColumnName="kEmail" />
+          <ScalarProperty Name="kTelNo" ColumnName="kTelNo" />
+          <ScalarProperty Name="kPassword" ColumnName="kPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Puan">
+      <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Puan">
+        <MappingFragment StoreEntitySet="Puan">
+          <ScalarProperty Name="puan1" ColumnName="puan" />
+          <ScalarProperty Name="sertfHakki" ColumnName="sertfHakki" />
+          <ScalarProperty Name="sertifikaID" ColumnName="sertifikaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sertifika">
+      <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Sertifika">
+        <MappingFragment StoreEntitySet="Sertifika">
+          <ScalarProperty Name="sertifikaID" ColumnName="sertifikaID" />
+          <ScalarProperty Name="sertifikaAdi" ColumnName="sertifikaAdi" />
+          <ScalarProperty Name="kursID" ColumnName="kursID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sinav">
+      <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Sinav">
+        <MappingFragment StoreEntitySet="Sinav">
+          <ScalarProperty Name="sinavID" ColumnName="sinavID" />
+          <ScalarProperty Name="sinavAdi" ColumnName="sinavAdi" />
+          <ScalarProperty Name="kursID" ColumnName="kursID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_">
+      <EntityTypeMapping TypeName="KURS_PROGRAMIModel.User_">
+        <MappingFragment StoreEntitySet="User_">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="yoneticiID" ColumnName="yoneticiID" />
+          <ScalarProperty Name="egitmenID" ColumnName="egitmenID" />
+          <ScalarProperty Name="kursiyerID" ColumnName="kursiyerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Video">
+      <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Video">
+        <MappingFragment StoreEntitySet="Video">
+          <ScalarProperty Name="videoID" ColumnName="videoID" />
+          <ScalarProperty Name="kursID" ColumnName="kursID" />
+          <ScalarProperty Name="konuID" ColumnName="konuID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yetki">
+      <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Yetki">
+        <MappingFragment StoreEntitySet="Yetki">
+          <ScalarProperty Name="yetkiDurumu" ColumnName="yetkiDurumu" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,1005 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="KURS_PROGRAMIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Egitmen">
+          <Key>
+            <PropertyRef Name="egitmenID" />
+          </Key>
+          <Property Name="egitmenID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="egitmenAdi" Type="nvarchar" MaxLength="30" />
+          <Property Name="egitmenSoyadi" Type="nvarchar" MaxLength="30" />
+          <Property Name="eEmail" Type="nvarchar" MaxLength="45" />
+          <Property Name="eTelNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="ePassword" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Konu">
+          <Key>
+            <PropertyRef Name="konuID" />
+          </Key>
+          <Property Name="konuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="konuAdi" Type="nvarchar" MaxLength="60" />
+          <Property Name="kursID" Type="int" />
+        </EntityType>
+        <EntityType Name="Kurs">
+          <Key>
+            <PropertyRef Name="kursID" />
+          </Key>
+          <Property Name="kursID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kursAdi" Type="nvarchar" MaxLength="60" />
+          <Property Name="fiyat" Type="float" />
+          <Property Name="egitmenID" Type="int" />
+          <Property Name="programID" Type="int" />
+        </EntityType>
+        <EntityType Name="Kurs_Programi">
+          <Key>
+            <PropertyRef Name="programID" />
+          </Key>
+          <Property Name="programID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="programAdi" Type="nvarchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="Kurs_Programi_Yoneticisi">
+          <Key>
+            <PropertyRef Name="yoneticiID" />
+          </Key>
+          <Property Name="yoneticiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="yoneticiAdi" Type="nvarchar" MaxLength="30" />
+          <Property Name="yoneticiSoyadi" Type="nvarchar" MaxLength="30" />
+          <Property Name="yEmail" Type="nvarchar" MaxLength="45" />
+          <Property Name="yTelNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="yPassword" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Kursiyer">
+          <Key>
+            <PropertyRef Name="kursiyerID" />
+          </Key>
+          <Property Name="kursiyerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kursiyerAdi" Type="nvarchar" MaxLength="30" />
+          <Property Name="kursiyerSoyadi" Type="nvarchar" MaxLength="30" />
+          <Property Name="kEmail" Type="nvarchar" MaxLength="45" />
+          <Property Name="kTelNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="kPassword" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Puan">
+          <Key>
+            <PropertyRef Name="puan" />
+          </Key>
+          <Property Name="puan" Type="float" Nullable="false" />
+          <Property Name="sertfHakki" Type="bit" />
+          <Property Name="sertifikaID" Type="int" />
+        </EntityType>
+        <EntityType Name="Sertifika">
+          <Key>
+            <PropertyRef Name="sertifikaID" />
+          </Key>
+          <Property Name="sertifikaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sertifikaAdi" Type="nvarchar" MaxLength="60" />
+          <Property Name="kursID" Type="int" />
+        </EntityType>
+        <EntityType Name="Sinav">
+          <Key>
+            <PropertyRef Name="sinavID" />
+          </Key>
+          <Property Name="sinavID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sinavAdi" Type="nvarchar" MaxLength="40" />
+          <Property Name="kursID" Type="int" />
+        </EntityType>
+        <EntityType Name="User_">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="yoneticiID" Type="int" />
+          <Property Name="egitmenID" Type="int" />
+          <Property Name="kursiyerID" Type="int" />
+          <Property Name="userAdi" Type="nvarchar" MaxLength="30" />
+          <Property Name="userSoyadi" Type="nvarchar" MaxLength="30" />
+          <Property Name="uEmail" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="uPassword" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="videoID" />
+          </Key>
+          <Property Name="videoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kursID" Type="int" />
+          <Property Name="konuID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KURS_PROGRAMI.dbo.Yetki' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Yetki">
+          <Key>
+            <PropertyRef Name="yetkiDurumu" />
+          </Key>
+          <Property Name="yetkiDurumu" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="userID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KURS_PROGRAMI.dbo.Egitmenlere_Gore_Kurslar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Egitmenlere_Gore_Kurslar">
+          <Key>
+            <PropertyRef Name="kursID" />
+          </Key>
+          <Property Name="kursID" Type="int" Nullable="false" />
+          <Property Name="kursAdi" Type="nvarchar" MaxLength="60" />
+          <Property Name="egitmenID" Type="int" />
+          <Property Name="egitmenAdi" Type="nvarchar" MaxLength="30" />
+          <Property Name="egitmenSoyadi" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KURS_PROGRAMI.dbo.Konusuna_Gore_Kurslar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Konusuna_Gore_Kurslar">
+          <Key>
+            <PropertyRef Name="kursID" />
+            <PropertyRef Name="konuID" />
+          </Key>
+          <Property Name="kursID" Type="int" Nullable="false" />
+          <Property Name="kursAdi" Type="nvarchar" MaxLength="60" />
+          <Property Name="konuID" Type="int" Nullable="false" />
+          <Property Name="konuAdi" Type="nvarchar" MaxLength="60" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KURS_PROGRAMI.dbo.Kullanici_Durumu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Kullanici_Durumu">
+          <Key>
+            <PropertyRef Name="userID" />
+            <PropertyRef Name="yetkiDurumu" />
+          </Key>
+          <Property Name="userID" Type="int" Nullable="false" />
+          <Property Name="yetkiDurumu" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="userAdi" Type="nvarchar" MaxLength="30" />
+          <Property Name="userSoyadi" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KURS_PROGRAMI.dbo.Kurs_Videolari' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Kurs_Videolari">
+          <Key>
+            <PropertyRef Name="kursID" />
+            <PropertyRef Name="videoID" />
+          </Key>
+          <Property Name="kursID" Type="int" Nullable="false" />
+          <Property Name="kursAdi" Type="nvarchar" MaxLength="60" />
+          <Property Name="videoID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KURS_PROGRAMI.dbo.Kursiyerler' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Kursiyerler">
+          <Key>
+            <PropertyRef Name="kursiyerID" />
+          </Key>
+          <Property Name="kursiyerID" Type="int" Nullable="false" />
+          <Property Name="kursiyerAdi" Type="nvarchar" MaxLength="30" />
+          <Property Name="kursiyerSoyadi" Type="nvarchar" MaxLength="30" />
+          <Property Name="kursAdi" Type="nvarchar" MaxLength="60" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KURS_PROGRAMI.dbo.Sertifika_Hakki' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Sertifika_Hakki">
+          <Key>
+            <PropertyRef Name="puan" />
+          </Key>
+          <Property Name="puan" Type="float" Nullable="false" />
+          <Property Name="kursiyerAdi" Type="nvarchar" MaxLength="30" />
+          <Property Name="kursiyerSoyadi" Type="nvarchar" MaxLength="30" />
+          <Property Name="sertifikaAdi" Type="nvarchar" MaxLength="60" />
+          <Property Name="sertfHakki" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KURS_PROGRAMI.dbo.Sertifikalara_Gore_Kursiyerler' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Sertifikalara_Gore_Kursiyerler">
+          <Key>
+            <PropertyRef Name="kursiyerID" />
+          </Key>
+          <Property Name="kursiyerID" Type="int" Nullable="false" />
+          <Property Name="kursiyerAdi" Type="nvarchar" MaxLength="30" />
+          <Property Name="kursiyerSoyadi" Type="nvarchar" MaxLength="30" />
+          <Property Name="sertifikaAdi" Type="nvarchar" MaxLength="60" />
+        </EntityType>
+        <Association Name="FK__Konu__kursID__3429BB53">
+          <End Role="Kurs" Type="Self.Kurs" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Konu" Type="Self.Konu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kurs">
+              <PropertyRef Name="kursID" />
+            </Principal>
+            <Dependent Role="Konu">
+              <PropertyRef Name="kursID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kurs__egitmenID__351DDF8C">
+          <End Role="Egitmen" Type="Self.Egitmen" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kurs" Type="Self.Kurs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Egitmen">
+              <PropertyRef Name="egitmenID" />
+            </Principal>
+            <Dependent Role="Kurs">
+              <PropertyRef Name="egitmenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kurs__programID__361203C5">
+          <End Role="Kurs_Programi" Type="Self.Kurs_Programi" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kurs" Type="Self.Kurs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kurs_Programi">
+              <PropertyRef Name="programID" />
+            </Principal>
+            <Dependent Role="Kurs">
+              <PropertyRef Name="programID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Puan__sertifikaI__37FA4C37">
+          <End Role="Sertifika" Type="Self.Sertifika" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Puan" Type="Self.Puan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sertifika">
+              <PropertyRef Name="sertifikaID" />
+            </Principal>
+            <Dependent Role="Puan">
+              <PropertyRef Name="sertifikaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User___egitmenID__46486B8E">
+          <End Role="Egitmen" Type="Self.Egitmen" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="User_" Type="Self.User_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Egitmen">
+              <PropertyRef Name="egitmenID" />
+            </Principal>
+            <Dependent Role="User_">
+              <PropertyRef Name="egitmenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User___kursiyerI__473C8FC7">
+          <End Role="Kursiyer" Type="Self.Kursiyer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="User_" Type="Self.User_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kursiyer">
+              <PropertyRef Name="kursiyerID" />
+            </Principal>
+            <Dependent Role="User_">
+              <PropertyRef Name="kursiyerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User___yoneticiI__45544755">
+          <End Role="Kurs_Programi_Yoneticisi" Type="Self.Kurs_Programi_Yoneticisi" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="User_" Type="Self.User_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kurs_Programi_Yoneticisi">
+              <PropertyRef Name="yoneticiID" />
+            </Principal>
+            <Dependent Role="User_">
+              <PropertyRef Name="yoneticiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Yetki__userID__4830B400">
+          <End Role="User_" Type="Self.User_" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Yetki" Type="Self.Yetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Yetki">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KURS_PROGRAMIModelStoreContainer">
+          <EntitySet Name="Egitmen" EntityType="Self.Egitmen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Konu" EntityType="Self.Konu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kurs" EntityType="Self.Kurs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kurs_Programi" EntityType="Self.Kurs_Programi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kurs_Programi_Yoneticisi" EntityType="Self.Kurs_Programi_Yoneticisi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kursiyer" EntityType="Self.Kursiyer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Puan" EntityType="Self.Puan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sertifika" EntityType="Self.Sertifika" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sinav" EntityType="Self.Sinav" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_" EntityType="Self.User_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Video" EntityType="Self.Video" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yetki" EntityType="Self.Yetki" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Yetki].[yetkiDurumu] AS [yetkiDurumu], 
+    [Yetki].[userID] AS [userID]
+    FROM [dbo].[Yetki] AS [Yetki]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Egitmenlere_Gore_Kurslar" EntityType="Self.Egitmenlere_Gore_Kurslar" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Egitmenlere_Gore_Kurslar].[kursID] AS [kursID], 
+    [Egitmenlere_Gore_Kurslar].[kursAdi] AS [kursAdi], 
+    [Egitmenlere_Gore_Kurslar].[egitmenID] AS [egitmenID], 
+    [Egitmenlere_Gore_Kurslar].[egitmenAdi] AS [egitmenAdi], 
+    [Egitmenlere_Gore_Kurslar].[egitmenSoyadi] AS [egitmenSoyadi]
+    FROM [dbo].[Egitmenlere_Gore_Kurslar] AS [Egitmenlere_Gore_Kurslar]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Konusuna_Gore_Kurslar" EntityType="Self.Konusuna_Gore_Kurslar" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Konusuna_Gore_Kurslar].[kursID] AS [kursID], 
+    [Konusuna_Gore_Kurslar].[kursAdi] AS [kursAdi], 
+    [Konusuna_Gore_Kurslar].[konuID] AS [konuID], 
+    [Konusuna_Gore_Kurslar].[konuAdi] AS [konuAdi]
+    FROM [dbo].[Konusuna_Gore_Kurslar] AS [Konusuna_Gore_Kurslar]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Kullanici_Durumu" EntityType="Self.Kullanici_Durumu" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Kullanici_Durumu].[userID] AS [userID], 
+    [Kullanici_Durumu].[yetkiDurumu] AS [yetkiDurumu], 
+    [Kullanici_Durumu].[userAdi] AS [userAdi], 
+    [Kullanici_Durumu].[userSoyadi] AS [userSoyadi]
+    FROM [dbo].[Kullanici_Durumu] AS [Kullanici_Durumu]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Kurs_Videolari" EntityType="Self.Kurs_Videolari" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Kurs_Videolari].[kursID] AS [kursID], 
+    [Kurs_Videolari].[kursAdi] AS [kursAdi], 
+    [Kurs_Videolari].[videoID] AS [videoID]
+    FROM [dbo].[Kurs_Videolari] AS [Kurs_Videolari]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Kursiyerler" EntityType="Self.Kursiyerler" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Kursiyerler].[kursiyerID] AS [kursiyerID], 
+    [Kursiyerler].[kursiyerAdi] AS [kursiyerAdi], 
+    [Kursiyerler].[kursiyerSoyadi] AS [kursiyerSoyadi], 
+    [Kursiyerler].[kursAdi] AS [kursAdi]
+    FROM [dbo].[Kursiyerler] AS [Kursiyerler]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Sertifika_Hakki" EntityType="Self.Sertifika_Hakki" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Sertifika_Hakki].[puan] AS [puan], 
+    [Sertifika_Hakki].[kursiyerAdi] AS [kursiyerAdi], 
+    [Sertifika_Hakki].[kursiyerSoyadi] AS [kursiyerSoyadi], 
+    [Sertifika_Hakki].[sertifikaAdi] AS [sertifikaAdi], 
+    [Sertifika_Hakki].[sertfHakki] AS [sertfHakki]
+    FROM [dbo].[Sertifika_Hakki] AS [Sertifika_Hakki]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Sertifikalara_Gore_Kursiyerler" EntityType="Self.Sertifikalara_Gore_Kursiyerler" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Sertifikalara_Gore_Kursiyerler].[kursiyerID] AS [kursiyerID], 
+    [Sertifikalara_Gore_Kursiyerler].[kursiyerAdi] AS [kursiyerAdi], 
+    [Sertifikalara_Gore_Kursiyerler].[kursiyerSoyadi] AS [kursiyerSoyadi], 
+    [Sertifikalara_Gore_Kursiyerler].[sertifikaAdi] AS [sertifikaAdi]
+    FROM [dbo].[Sertifikalara_Gore_Kursiyerler] AS [Sertifikalara_Gore_Kursiyerler]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Konu__kursID__3429BB53" Association="Self.FK__Konu__kursID__3429BB53">
+            <End Role="Kurs" EntitySet="Kurs" />
+            <End Role="Konu" EntitySet="Konu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kurs__egitmenID__351DDF8C" Association="Self.FK__Kurs__egitmenID__351DDF8C">
+            <End Role="Egitmen" EntitySet="Egitmen" />
+            <End Role="Kurs" EntitySet="Kurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kurs__programID__361203C5" Association="Self.FK__Kurs__programID__361203C5">
+            <End Role="Kurs_Programi" EntitySet="Kurs_Programi" />
+            <End Role="Kurs" EntitySet="Kurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Puan__sertifikaI__37FA4C37" Association="Self.FK__Puan__sertifikaI__37FA4C37">
+            <End Role="Sertifika" EntitySet="Sertifika" />
+            <End Role="Puan" EntitySet="Puan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User___egitmenID__46486B8E" Association="Self.FK__User___egitmenID__46486B8E">
+            <End Role="Egitmen" EntitySet="Egitmen" />
+            <End Role="User_" EntitySet="User_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User___kursiyerI__473C8FC7" Association="Self.FK__User___kursiyerI__473C8FC7">
+            <End Role="Kursiyer" EntitySet="Kursiyer" />
+            <End Role="User_" EntitySet="User_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User___yoneticiI__45544755" Association="Self.FK__User___yoneticiI__45544755">
+            <End Role="Kurs_Programi_Yoneticisi" EntitySet="Kurs_Programi_Yoneticisi" />
+            <End Role="User_" EntitySet="User_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Yetki__userID__4830B400" Association="Self.FK__Yetki__userID__4830B400">
+            <End Role="User_" EntitySet="User_" />
+            <End Role="Yetki" EntitySet="Yetki" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KURS_PROGRAMIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Egitmen">
+          <Key>
+            <PropertyRef Name="egitmenID" />
+          </Key>
+          <Property Name="egitmenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="egitmenAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="egitmenSoyadi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="eEmail" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="eTelNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ePassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Kurs" Relationship="Self.FK__Kurs__egitmenID__351DDF8C" FromRole="Egitmen" ToRole="Kurs" />
+          <NavigationProperty Name="User_" Relationship="Self.FK__User___egitmenID__3EA749C6" FromRole="Egitmen" ToRole="User_" />
+        </EntityType>
+        <EntityType Name="Konu">
+          <Key>
+            <PropertyRef Name="konuID" />
+          </Key>
+          <Property Name="konuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="konuAdi" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="kursID" Type="Int32" />
+          <NavigationProperty Name="Kurs" Relationship="Self.FK__Konu__kursID__3429BB53" FromRole="Konu" ToRole="Kurs" />
+        </EntityType>
+        <EntityType Name="Kurs">
+          <Key>
+            <PropertyRef Name="kursID" />
+          </Key>
+          <Property Name="kursID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kursAdi" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="fiyat" Type="Double" />
+          <Property Name="egitmenID" Type="Int32" />
+          <Property Name="programID" Type="Int32" />
+          <NavigationProperty Name="Egitmen" Relationship="Self.FK__Kurs__egitmenID__351DDF8C" FromRole="Kurs" ToRole="Egitmen" />
+          <NavigationProperty Name="Konu" Relationship="Self.FK__Konu__kursID__3429BB53" FromRole="Kurs" ToRole="Konu" />
+          <NavigationProperty Name="Kurs_Programi" Relationship="Self.FK__Kurs__programID__361203C5" FromRole="Kurs" ToRole="Kurs_Programi" />
+        </EntityType>
+        <EntityType Name="Kurs_Programi">
+          <Key>
+            <PropertyRef Name="programID" />
+          </Key>
+          <Property Name="programID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="programAdi" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Kurs" Relationship="Self.FK__Kurs__programID__361203C5" FromRole="Kurs_Programi" ToRole="Kurs" />
+        </EntityType>
+        <EntityType Name="Kurs_Programi_Yoneticisi">
+          <Key>
+            <PropertyRef Name="yoneticiID" />
+          </Key>
+          <Property Name="yoneticiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="yoneticiAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="yoneticiSoyadi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="yEmail" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="yTelNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="yPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User_" Relationship="Self.FK__User___yoneticiI__3DB3258D" FromRole="Kurs_Programi_Yoneticisi" ToRole="User_" />
+        </EntityType>
+        <EntityType Name="Kursiyer">
+          <Key>
+            <PropertyRef Name="kursiyerID" />
+          </Key>
+          <Property Name="kursiyerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kursiyerAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="kursiyerSoyadi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="kEmail" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="kTelNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="kPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User_" Relationship="Self.FK__User___kursiyerI__3F9B6DFF" FromRole="Kursiyer" ToRole="User_" />
+        </EntityType>
+        <EntityType Name="Puan">
+          <Key>
+            <PropertyRef Name="puan1" />
+          </Key>
+          <Property Name="puan1" Type="Double" Nullable="false" />
+          <Property Name="sertfHakki" Type="Boolean" />
+          <Property Name="sertifikaID" Type="Int32" />
+          <NavigationProperty Name="Sertifika" Relationship="Self.FK__Puan__sertifikaI__37FA4C37" FromRole="Puan" ToRole="Sertifika" />
+        </EntityType>
+        <EntityType Name="Sertifika">
+          <Key>
+            <PropertyRef Name="sertifikaID" />
+          </Key>
+          <Property Name="sertifikaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sertifikaAdi" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="kursID" Type="Int32" />
+          <NavigationProperty Name="Puan" Relationship="Self.FK__Puan__sertifikaI__37FA4C37" FromRole="Sertifika" ToRole="Puan" />
+        </EntityType>
+        <EntityType Name="Sinav">
+          <Key>
+            <PropertyRef Name="sinavID" />
+          </Key>
+          <Property Name="sinavID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sinavAdi" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="kursID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="User_">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="yoneticiID" Type="Int32" />
+          <Property Name="egitmenID" Type="Int32" />
+          <Property Name="kursiyerID" Type="Int32" />
+          <Property Name="userAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="userSoyadi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="uPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Egitmen" Relationship="Self.FK__User___egitmenID__3EA749C6" FromRole="User_" ToRole="Egitmen" />
+          <NavigationProperty Name="Kurs_Programi_Yoneticisi" Relationship="Self.FK__User___yoneticiI__3DB3258D" FromRole="User_" ToRole="Kurs_Programi_Yoneticisi" />
+          <NavigationProperty Name="Kursiyer" Relationship="Self.FK__User___kursiyerI__3F9B6DFF" FromRole="User_" ToRole="Kursiyer" />
+          <NavigationProperty Name="Yetki" Relationship="Self.FK__Yetki__userID__3CBF0154" FromRole="User_" ToRole="Yetki" />
+          <Property Name="uEmail" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="videoID" />
+          </Key>
+          <Property Name="videoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kursID" Type="Int32" />
+          <Property Name="konuID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Yetki">
+          <Key>
+            <PropertyRef Name="yetkiDurumu" />
+          </Key>
+          <Property Name="yetkiDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userID" Type="Int32" />
+          <NavigationProperty Name="User_" Relationship="Self.FK__Yetki__userID__3CBF0154" FromRole="Yetki" ToRole="User_" />
+        </EntityType>
+        <EntityType Name="Egitmenlere_Gore_Kurslar">
+          <Key>
+            <PropertyRef Name="kursID" />
+          </Key>
+          <Property Name="kursID" Type="Int32" Nullable="false" />
+          <Property Name="kursAdi" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="egitmenID" Type="Int32" />
+          <Property Name="egitmenAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="egitmenSoyadi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Konusuna_Gore_Kurslar">
+          <Key>
+            <PropertyRef Name="kursID" />
+            <PropertyRef Name="konuID" />
+          </Key>
+          <Property Name="kursID" Type="Int32" Nullable="false" />
+          <Property Name="kursAdi" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="konuID" Type="Int32" Nullable="false" />
+          <Property Name="konuAdi" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Kullanici_Durumu">
+          <Key>
+            <PropertyRef Name="userID" />
+            <PropertyRef Name="yetkiDurumu" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="yetkiDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="userSoyadi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Kurs_Videolari">
+          <Key>
+            <PropertyRef Name="kursID" />
+            <PropertyRef Name="videoID" />
+          </Key>
+          <Property Name="kursID" Type="Int32" Nullable="false" />
+          <Property Name="kursAdi" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="videoID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kursiyerler">
+          <Key>
+            <PropertyRef Name="kursiyerID" />
+          </Key>
+          <Property Name="kursiyerID" Type="Int32" Nullable="false" />
+          <Property Name="kursiyerAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="kursiyerSoyadi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="kursAdi" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Sertifika_Hakki">
+          <Key>
+            <PropertyRef Name="puan" />
+          </Key>
+          <Property Name="puan" Type="Double" Nullable="false" />
+          <Property Name="sertfHakki" Type="Boolean" />
+          <Property Name="kursiyerAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="kursiyerSoyadi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="sertifikaAdi" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Sertifikalara_Gore_Kursiyerler">
+          <Key>
+            <PropertyRef Name="kursiyerID" />
+          </Key>
+          <Property Name="kursiyerID" Type="Int32" Nullable="false" />
+          <Property Name="kursiyerAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="kursiyerSoyadi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="sertifikaAdi" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__Kurs__egitmenID__351DDF8C">
+          <End Role="Egitmen" Type="Self.Egitmen" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kurs" Type="Self.Kurs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Egitmen">
+              <PropertyRef Name="egitmenID" />
+            </Principal>
+            <Dependent Role="Kurs">
+              <PropertyRef Name="egitmenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User___egitmenID__3EA749C6">
+          <End Role="Egitmen" Type="Self.Egitmen" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="User_" Type="Self.User_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Egitmen">
+              <PropertyRef Name="egitmenID" />
+            </Principal>
+            <Dependent Role="User_">
+              <PropertyRef Name="egitmenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Konu__kursID__3429BB53">
+          <End Role="Kurs" Type="Self.Kurs" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Konu" Type="Self.Konu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kurs">
+              <PropertyRef Name="kursID" />
+            </Principal>
+            <Dependent Role="Konu">
+              <PropertyRef Name="kursID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kurs__programID__361203C5">
+          <End Role="Kurs_Programi" Type="Self.Kurs_Programi" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kurs" Type="Self.Kurs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kurs_Programi">
+              <PropertyRef Name="programID" />
+            </Principal>
+            <Dependent Role="Kurs">
+              <PropertyRef Name="programID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User___yoneticiI__3DB3258D">
+          <End Role="Kurs_Programi_Yoneticisi" Type="Self.Kurs_Programi_Yoneticisi" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="User_" Type="Self.User_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kurs_Programi_Yoneticisi">
+              <PropertyRef Name="yoneticiID" />
+            </Principal>
+            <Dependent Role="User_">
+              <PropertyRef Name="yoneticiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User___kursiyerI__3F9B6DFF">
+          <End Role="Kursiyer" Type="Self.Kursiyer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="User_" Type="Self.User_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kursiyer">
+              <PropertyRef Name="kursiyerID" />
+            </Principal>
+            <Dependent Role="User_">
+              <PropertyRef Name="kursiyerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Puan__sertifikaI__37FA4C37">
+          <End Role="Sertifika" Type="Self.Sertifika" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Puan" Type="Self.Puan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sertifika">
+              <PropertyRef Name="sertifikaID" />
+            </Principal>
+            <Dependent Role="Puan">
+              <PropertyRef Name="sertifikaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Yetki__userID__3CBF0154">
+          <End Role="User_" Type="Self.User_" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Yetki" Type="Self.Yetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Yetki">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KURS_PROGRAMIEntities8" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Egitmen" EntityType="Self.Egitmen" />
+          <EntitySet Name="Konu" EntityType="Self.Konu" />
+          <EntitySet Name="Kurs" EntityType="Self.Kurs" />
+          <EntitySet Name="Kurs_Programi" EntityType="Self.Kurs_Programi" />
+          <EntitySet Name="Kurs_Programi_Yoneticisi" EntityType="Self.Kurs_Programi_Yoneticisi" />
+          <EntitySet Name="Kursiyer" EntityType="Self.Kursiyer" />
+          <EntitySet Name="Puan" EntityType="Self.Puan" />
+          <EntitySet Name="Sertifika" EntityType="Self.Sertifika" />
+          <EntitySet Name="Sinav" EntityType="Self.Sinav" />
+          <EntitySet Name="User_" EntityType="Self.User_" />
+          <EntitySet Name="Video" EntityType="Self.Video" />
+          <EntitySet Name="Yetki" EntityType="Self.Yetki" />
+          <EntitySet Name="Egitmenlere_Gore_Kurslar" EntityType="Self.Egitmenlere_Gore_Kurslar" />
+          <EntitySet Name="Konusuna_Gore_Kurslar" EntityType="Self.Konusuna_Gore_Kurslar" />
+          <EntitySet Name="Kullanici_Durumu" EntityType="Self.Kullanici_Durumu" />
+          <EntitySet Name="Kurs_Videolari" EntityType="Self.Kurs_Videolari" />
+          <EntitySet Name="Kursiyerler" EntityType="Self.Kursiyerler" />
+          <EntitySet Name="Sertifika_Hakki" EntityType="Self.Sertifika_Hakki" />
+          <EntitySet Name="Sertifikalara_Gore_Kursiyerler" EntityType="Self.Sertifikalara_Gore_Kursiyerler" />
+          <AssociationSet Name="FK__Kurs__egitmenID__351DDF8C" Association="Self.FK__Kurs__egitmenID__351DDF8C">
+            <End Role="Egitmen" EntitySet="Egitmen" />
+            <End Role="Kurs" EntitySet="Kurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User___egitmenID__3EA749C6" Association="Self.FK__User___egitmenID__3EA749C6">
+            <End Role="Egitmen" EntitySet="Egitmen" />
+            <End Role="User_" EntitySet="User_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Konu__kursID__3429BB53" Association="Self.FK__Konu__kursID__3429BB53">
+            <End Role="Kurs" EntitySet="Kurs" />
+            <End Role="Konu" EntitySet="Konu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kurs__programID__361203C5" Association="Self.FK__Kurs__programID__361203C5">
+            <End Role="Kurs_Programi" EntitySet="Kurs_Programi" />
+            <End Role="Kurs" EntitySet="Kurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User___yoneticiI__3DB3258D" Association="Self.FK__User___yoneticiI__3DB3258D">
+            <End Role="Kurs_Programi_Yoneticisi" EntitySet="Kurs_Programi_Yoneticisi" />
+            <End Role="User_" EntitySet="User_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User___kursiyerI__3F9B6DFF" Association="Self.FK__User___kursiyerI__3F9B6DFF">
+            <End Role="Kursiyer" EntitySet="Kursiyer" />
+            <End Role="User_" EntitySet="User_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Puan__sertifikaI__37FA4C37" Association="Self.FK__Puan__sertifikaI__37FA4C37">
+            <End Role="Sertifika" EntitySet="Sertifika" />
+            <End Role="Puan" EntitySet="Puan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Yetki__userID__3CBF0154" Association="Self.FK__Yetki__userID__3CBF0154">
+            <End Role="User_" EntitySet="User_" />
+            <End Role="Yetki" EntitySet="Yetki" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KURS_PROGRAMIModelStoreContainer" CdmEntityContainer="KURS_PROGRAMIEntities8">
+          <EntitySetMapping Name="Egitmen">
+            <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Egitmen">
+              <MappingFragment StoreEntitySet="Egitmen">
+                <ScalarProperty Name="egitmenID" ColumnName="egitmenID" />
+                <ScalarProperty Name="egitmenAdi" ColumnName="egitmenAdi" />
+                <ScalarProperty Name="egitmenSoyadi" ColumnName="egitmenSoyadi" />
+                <ScalarProperty Name="eEmail" ColumnName="eEmail" />
+                <ScalarProperty Name="eTelNo" ColumnName="eTelNo" />
+                <ScalarProperty Name="ePassword" ColumnName="ePassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Konu">
+            <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Konu">
+              <MappingFragment StoreEntitySet="Konu">
+                <ScalarProperty Name="konuID" ColumnName="konuID" />
+                <ScalarProperty Name="konuAdi" ColumnName="konuAdi" />
+                <ScalarProperty Name="kursID" ColumnName="kursID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kurs">
+            <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Kurs">
+              <MappingFragment StoreEntitySet="Kurs">
+                <ScalarProperty Name="kursID" ColumnName="kursID" />
+                <ScalarProperty Name="kursAdi" ColumnName="kursAdi" />
+                <ScalarProperty Name="fiyat" ColumnName="fiyat" />
+                <ScalarProperty Name="egitmenID" ColumnName="egitmenID" />
+                <ScalarProperty Name="programID" ColumnName="programID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kurs_Programi">
+            <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Kurs_Programi">
+              <MappingFragment StoreEntitySet="Kurs_Programi">
+                <ScalarProperty Name="programID" ColumnName="programID" />
+                <ScalarProperty Name="programAdi" ColumnName="programAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kurs_Programi_Yoneticisi">
+            <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Kurs_Programi_Yoneticisi">
+              <MappingFragment StoreEntitySet="Kurs_Programi_Yoneticisi">
+                <ScalarProperty Name="yoneticiID" ColumnName="yoneticiID" />
+                <ScalarProperty Name="yoneticiAdi" ColumnName="yoneticiAdi" />
+                <ScalarProperty Name="yoneticiSoyadi" ColumnName="yoneticiSoyadi" />
+                <ScalarProperty Name="yEmail" ColumnName="yEmail" />
+                <ScalarProperty Name="yTelNo" ColumnName="yTelNo" />
+                <ScalarProperty Name="yPassword" ColumnName="yPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kursiyer">
+            <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Kursiyer">
+              <MappingFragment StoreEntitySet="Kursiyer">
+                <ScalarProperty Name="kursiyerID" ColumnName="kursiyerID" />
+                <ScalarProperty Name="kursiyerAdi" ColumnName="kursiyerAdi" />
+                <ScalarProperty Name="kursiyerSoyadi" ColumnName="kursiyerSoyadi" />
+                <ScalarProperty Name="kEmail" ColumnName="kEmail" />
+                <ScalarProperty Name="kTelNo" ColumnName="kTelNo" />
+                <ScalarProperty Name="kPassword" ColumnName="kPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Puan">
+            <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Puan">
+              <MappingFragment StoreEntitySet="Puan">
+                <ScalarProperty Name="puan1" ColumnName="puan" />
+                <ScalarProperty Name="sertfHakki" ColumnName="sertfHakki" />
+                <ScalarProperty Name="sertifikaID" ColumnName="sertifikaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sertifika">
+            <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Sertifika">
+              <MappingFragment StoreEntitySet="Sertifika">
+                <ScalarProperty Name="sertifikaID" ColumnName="sertifikaID" />
+                <ScalarProperty Name="sertifikaAdi" ColumnName="sertifikaAdi" />
+                <ScalarProperty Name="kursID" ColumnName="kursID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sinav">
+            <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Sinav">
+              <MappingFragment StoreEntitySet="Sinav">
+                <ScalarProperty Name="sinavID" ColumnName="sinavID" />
+                <ScalarProperty Name="sinavAdi" ColumnName="sinavAdi" />
+                <ScalarProperty Name="kursID" ColumnName="kursID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_">
+            <EntityTypeMapping TypeName="KURS_PROGRAMIModel.User_">
+              <MappingFragment StoreEntitySet="User_">
+                <ScalarProperty Name="uEmail" ColumnName="uEmail" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="yoneticiID" ColumnName="yoneticiID" />
+                <ScalarProperty Name="egitmenID" ColumnName="egitmenID" />
+                <ScalarProperty Name="kursiyerID" ColumnName="kursiyerID" />
+                <ScalarProperty Name="userAdi" ColumnName="userAdi" />
+                <ScalarProperty Name="userSoyadi" ColumnName="userSoyadi" />
+                <ScalarProperty Name="uPassword" ColumnName="uPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Video">
+            <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Video">
+              <MappingFragment StoreEntitySet="Video">
+                <ScalarProperty Name="videoID" ColumnName="videoID" />
+                <ScalarProperty Name="kursID" ColumnName="kursID" />
+                <ScalarProperty Name="konuID" ColumnName="konuID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yetki">
+            <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Yetki">
+              <MappingFragment StoreEntitySet="Yetki">
+                <ScalarProperty Name="yetkiDurumu" ColumnName="yetkiDurumu" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Egitmenlere_Gore_Kurslar">
+            <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Egitmenlere_Gore_Kurslar">
+              <MappingFragment StoreEntitySet="Egitmenlere_Gore_Kurslar">
+                <ScalarProperty Name="kursID" ColumnName="kursID" />
+                <ScalarProperty Name="kursAdi" ColumnName="kursAdi" />
+                <ScalarProperty Name="egitmenID" ColumnName="egitmenID" />
+                <ScalarProperty Name="egitmenAdi" ColumnName="egitmenAdi" />
+                <ScalarProperty Name="egitmenSoyadi" ColumnName="egitmenSoyadi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Konusuna_Gore_Kurslar">
+            <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Konusuna_Gore_Kurslar">
+              <MappingFragment StoreEntitySet="Konusuna_Gore_Kurslar">
+                <ScalarProperty Name="kursID" ColumnName="kursID" />
+                <ScalarProperty Name="kursAdi" ColumnName="kursAdi" />
+                <ScalarProperty Name="konuID" ColumnName="konuID" />
+                <ScalarProperty Name="konuAdi" ColumnName="konuAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanici_Durumu">
+            <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Kullanici_Durumu">
+              <MappingFragment StoreEntitySet="Kullanici_Durumu">
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="yetkiDurumu" ColumnName="yetkiDurumu" />
+                <ScalarProperty Name="userAdi" ColumnName="userAdi" />
+                <ScalarProperty Name="userSoyadi" ColumnName="userSoyadi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kurs_Videolari">
+            <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Kurs_Videolari">
+              <MappingFragment StoreEntitySet="Kurs_Videolari">
+                <ScalarProperty Name="kursID" ColumnName="kursID" />
+                <ScalarProperty Name="kursAdi" ColumnName="kursAdi" />
+                <ScalarProperty Name="videoID" ColumnName="videoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kursiyerler">
+            <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Kursiyerler">
+              <MappingFragment StoreEntitySet="Kursiyerler">
+                <ScalarProperty Name="kursiyerID" ColumnName="kursiyerID" />
+                <ScalarProperty Name="kursiyerAdi" ColumnName="kursiyerAdi" />
+                <ScalarProperty Name="kursiyerSoyadi" ColumnName="kursiyerSoyadi" />
+                <ScalarProperty Name="kursAdi" ColumnName="kursAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sertifika_Hakki">
+            <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Sertifika_Hakki">
+              <MappingFragment StoreEntitySet="Sertifika_Hakki">
+                <ScalarProperty Name="puan" ColumnName="puan" />
+                <ScalarProperty Name="sertfHakki" ColumnName="sertfHakki" />
+                <ScalarProperty Name="kursiyerAdi" ColumnName="kursiyerAdi" />
+                <ScalarProperty Name="kursiyerSoyadi" ColumnName="kursiyerSoyadi" />
+                <ScalarProperty Name="sertifikaAdi" ColumnName="sertifikaAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sertifikalara_Gore_Kursiyerler">
+            <EntityTypeMapping TypeName="KURS_PROGRAMIModel.Sertifikalara_Gore_Kursiyerler">
+              <MappingFragment StoreEntitySet="Sertifikalara_Gore_Kursiyerler">
+                <ScalarProperty Name="kursiyerID" ColumnName="kursiyerID" />
+                <ScalarProperty Name="kursiyerAdi" ColumnName="kursiyerAdi" />
+                <ScalarProperty Name="kursiyerSoyadi" ColumnName="kursiyerSoyadi" />
+                <ScalarProperty Name="sertifikaAdi" ColumnName="sertifikaAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
