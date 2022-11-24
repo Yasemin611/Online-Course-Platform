@@ -1,0 +1,63 @@
+﻿@using WebApplication2.Models;
+@model List<Kurs>
+@{
+    ViewBag.Title = "Courses";
+}
+<div class="jumbotron">
+</div>
+<h2>Courses Page</h2>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="sparkline12-list mg-b-30">
+            <div class="sparkline12-hd">
+                <div class="main-sparkline12-hd">
+                    <h1>Hover Table</h1>
+                </div>
+            </div>
+            <div class="sparkline12-graph">
+                <div class="static-table-list">
+                    <table class="table hover-table">
+                        <thead>
+                            <tr>
+                                <th>Course ID</th>
+                                <th>Course Name</th>
+                                <th>Price</th>
+                                <th>Instructor ID</th>
+                                <th>Programme ID</th>
+                                <th>Delete</th>
+                                @*<th>Update</th>*@
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.kursID</td>
+                                    <td>@item.kursAdi</td>
+                                    <td>@item.fiyat</td>
+                                    <td>@item.egitmenID</td>
+                                    <td>@item.programID</td>
+                                    <td><a href="/Kurs/kursSil/@item.kursID" class="btn btn-danger"> Delete </a></td>
+                                    @*<td><a href="/Kurs/kursGüncelle/@item.kursID" class="btn btn-danger"> Update </a></td>*@
+
+                                    @*<td>
+            <span class="label label-success">Complete</span>
+        </td>*@
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*@foreach (Kurs item in Model)
+        {
+            <h6> @item.kursID</h6>
+        }
+        <br />
+
+        @foreach (var item in ViewBag.konu as List<Konu>)
+        {
+            <h5>  @item.konuAdi</h5>
+        }*@

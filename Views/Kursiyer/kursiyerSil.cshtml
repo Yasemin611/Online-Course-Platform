@@ -1,0 +1,24 @@
+﻿@using WebApplication2.Models
+@model Kursiyer
+@{
+    ViewBag.Title = "kursiyerSil";
+}
+
+<h2>kursiyerSil</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="block-heading">
+            <div class="main-txt h2"> OPERATIONS OF DELETING TRAINEE </div>
+        </div>
+        <div class="block-content-outer">
+            <div class="block-content-inner">
+                <form action="/Kursiyer/kursiyerSil" method="post">
+                    <input type="hidden" name="kursiyerID" value="@Model.kursiyerID" />
+                    <label> Delete trainee named @Model.kursiyerAdi @Model.kursiyerSoyadi ?</label>
+                    <input class="btn-danger rounded" type="submit" value="Yes" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

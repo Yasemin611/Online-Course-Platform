@@ -1,0 +1,24 @@
+﻿@using WebApplication2.Models
+@model Egitmen
+@{
+    ViewBag.Title = "egitmenSil";
+}
+
+<h2>egitmenSil</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block-heading">
+            <div class="main-txt h2"> OPERATIONS OF DELETING INSTRUCTOR </div>
+        </div>
+        <div class="block-content-outer">
+            <div class="block-content-inner">
+                <form action="/Egitmen/egitmenSil" method="post">
+                    <input type="hidden" name="egitmenID" value="@Model.egitmenID" />
+                    <label> Delete instructor named @Model.egitmenAdi @Model.egitmenSoyadi ?</label>
+                    <input class="btn-danger rounded" type="submit" value="Yes" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

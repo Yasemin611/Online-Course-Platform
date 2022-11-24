@@ -1,0 +1,65 @@
+﻿@using WebApplication2.Models;
+@model User_
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="breadcome-heading">
+            <form role="search" class="sr-input-func">
+                <input type="text" placeholder="Search..." class="search-int form-control">
+                <a href="#"><i class="fa fa-search"></i></a>
+            </form>
+        </div>
+    </div>
+</div>
+<br />
+<h1>Welcome to Let's START!! @Model.userAdi </h1>
+
+<div class="jumbotron">
+    <div align="center">
+        <img src="~/Content/img/course-student.png" alt="HomePage" style="width:546px;height:360px;"> </div>
+    </div>
+<section class="main-list p-main">
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="main-list-item">
+                    <img src="~/Content/img/education.png" class="main-list-img">
+                    <div class="main-list-item-body">
+                        <br />
+                        <h3>COURSES</h3>
+                        <p>
+                            This online program includes training and courses in various fields. Thanks to these courses, trainees will have a good foundation and will be able to develop themselves easily.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="main-list-item">
+                    <img src="~/Content/img/online_teacher.jpeg" class="main-list-img">
+                    <div class="main-list-item-body">
+                        <br />
+                        <h3>INSTRUCTORS</h3>
+                        <p>
+                            The courses are given by many successful trainers who are experts in their fields. The methods used by the instructors and the lessons they give will be very useful to you and will lead you to success.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="main-list-item">
+                    <img src="~/Content/img/certificate.jpg" class="main-list-img">
+                    <div class="main-list-item-body">
+                        <br />
+                        <h3>CERTIFICATES</h3>
+                        <p>
+                            Trainees who successfully complete these courses given by expert trainers will be entitled to receive a certificate. These certificates will be of great benefit to you both in your business life and in your personal development.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+</section>

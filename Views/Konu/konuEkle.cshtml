@@ -1,0 +1,62 @@
+﻿@using WebApplication2.Models;
+@model List<Konu>
+@{
+    ViewBag.Title = "konuEkle";
+}
+
+<h2>konuEkle</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    OPERATIONS OF ADDING SUBJECT
+                </div>
+                <div class="block-controls">
+                    <a href="/Konu/Index"></a>
+                    <span aria-hidden="true" class="icon icon-cross icon-size-medium block-control-remove"></span>
+                    <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+                </div>
+            </div>
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                    <form action="/Konu/konuEkle" method="post" role="form">
+                        @*@if (Model != null)
+        {
+            <input disabled type="text" name="konuID" value="@Model.konuID" />
+        }
+        <div class="form-group">
+            <label for="exampleInputEmail1">Subject Name</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Subject Name" name="konuAdi">
+        </div>
+
+        @if (Model.konuAdi == null)
+        {
+            <input value="" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Subject Name" name="konuAdi">
+        }
+        else
+        {
+            <input value="@Model.konuAdi" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Subject Name" name="konuAdi">
+        }*@
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Subject Name</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Subject Name" name="konuAdi">
+                        </div>
+                       
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Course</label>
+                            <select class="form-control" name="kursID">
+                                @foreach (Kurs item in ViewBag.kurs)
+                                {
+                                    <option value="@item.kursID">@item.kursAdi</option>
+                                }
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Subject</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

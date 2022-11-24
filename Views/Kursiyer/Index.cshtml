@@ -1,0 +1,55 @@
+﻿@using WebApplication2.Models;
+@model List<Kursiyer>
+@{
+    ViewBag.Title = "Trainees";
+}
+<div class="jumbotron">
+
+</div>
+<h2>Trainees Page</h2>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="sparkline12-list mg-b-30">
+        <div class="sparkline12-hd">
+            <div class="main-sparkline12-hd">
+                <h1>Hover Table</h1>
+            </div>
+        </div>
+        <div class="sparkline12-graph">
+            <div class="static-table-list">
+                <table class="table hover-table">
+                    <thead>
+                        <tr>
+                            <th>Trainee ID</th>
+                            <th>Trainee Name</th>
+                            <th>Trainee Surname</th>
+                            <th>Trainee Email</th>
+                            <th>Trainee Tel</th>
+                            <th>Trainee Password</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.kursiyerID</td>
+                                <td>@item.kursiyerAdi</td>
+                                <td>@item.kursiyerSoyadi</td>
+                                <td>@item.kEmail</td>
+                                <td>@item.kTelNo</td>
+                                <td>@item.kPassword</td>
+                                <td><a href="/Kursiyer/kursiyerSil/@item.kursiyerID" class="btn btn-danger"> Delete </a></td>
+                                @*<td>
+            <span class="label label-success">Complete</span>
+        </td>*@
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

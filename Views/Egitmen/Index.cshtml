@@ -1,0 +1,58 @@
+﻿@using WebApplication2.Models;
+@model List<Egitmen>
+@{
+    ViewBag.Title = "Instructors";
+}
+<div class="jumbotron">
+
+</div>
+<h2>Instructors Page</h2>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="sparkline12-list mg-b-30">
+        <div class="sparkline12-hd">
+            <div class="main-sparkline12-hd">
+                <h1>Hover Table</h1>
+            </div>
+        </div>
+        <div class="sparkline12-graph">
+            <div class="static-table-list">
+                <table class="table hover-table">
+                    <thead>
+                        <tr>
+                            <th>Instructor ID</th>
+                            <th>Instructor Name</th>
+                            <th>Instructor Surname</th>
+                            <th>Instructor Email</th>
+                            <th>Instructor Tel</th>
+                            <th>Instructor Password</th>
+                            <th>Delete</th>
+                            @*<th>Update</th>*@
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.egitmenID</td>
+                                <td>@item.egitmenAdi</td>
+                                <td>@item.egitmenSoyadi</td>
+                                <td>@item.eEmail</td>
+                                <td>@item.eTelNo</td>
+                                <td>@item.ePassword</td>
+                                <td><a href="/Egitmen/egitmenSil/@item.egitmenID" class="btn btn-danger"> Delete </a></td>
+                                @*<td><a href="/Egitmen/egitmenGüncelle/@item.egitmenID" class="btn btn-danger"> Update </a></td>*@
+
+                                @*<td>
+            <span class="label label-success">Complete</span>
+        </td>*@
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿@using WebApplication2.Models;
+@model Video
+@{
+    ViewBag.Title = "kursVideo";
+}
+
+<h2>kursVideo</h2>
+
+
+@*@foreach (var item in ViewBag.video)
+    {
+        <p> Here is the video with the id = @item.videoID</p>
+        <video controls>
+            <source src="~/Content/videos/videoo.mp4">
+        </video>
+    }*@
+<div align="center">
+    <p> Here is the video!</p>
+    <video width="720" height="640" controls>
+        <source src="~/Content/videos/videoo.mp4">
+    </video>
+</div>

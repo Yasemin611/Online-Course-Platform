@@ -1,0 +1,58 @@
+﻿@using WebApplication2.Models;
+@model List<Video>
+@{
+    ViewBag.Title = "videoEkle";
+}
+
+<h2>videoEkle</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    OPERATIONS OF ADDING VIDEO
+                </div>
+                <div class="block-controls">
+                    <a href="/Video/Index"></a>
+                    <span aria-hidden="true" class="icon icon-cross icon-size-medium block-control-remove"></span>
+                    <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+                </div>
+            </div>
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                    <form action="/Video/videoEkle" method="post" role="form">
+                        @*<div class="form-group">
+                                <label for="exampleInputEmail1">Course ID</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Course ID" name="kursID">
+                            </div>*@
+                        @*<div class="form-group">
+                            <label for="exampleInputEmail1">Video ID</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Video ID" name="videoID">
+                        </div>*@
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Course ID</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Kurs ID" name="kursID">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Subject ID</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Konu ID" name="konuID">
+                        </div>
+
+
+                        <div class="form-group">
+                                <label for="exampleInputPassword1">Course</label>
+                                <select class="form-control" name="kursID">
+                                    @foreach (Kurs item in ViewBag.kurs)
+                                    {
+                                        <option value="@item.kursID">@item.kursAdi</option>
+                                    }
+                                </select>
+                            </div>
+                        <button type="submit" class="btn btn-primary">Add Video</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

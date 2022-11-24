@@ -1,0 +1,37 @@
+﻿@using WebApplication2.Models;
+@model List<_Page_Views_Home_Hata_cshtml>
+@{
+    ViewBag.Title = "Error Page";
+
+}
+<div class="jumbotron">
+
+</div>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error</title>
+</head>
+<body>
+    <div class="alert-area mg-b-15">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="alert-wrap2 shadow-inner wrap-alert-b">
+                        <div class="alert alert-danger alert-mg-b">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <strong>Danger!</strong> You Do Not Have Any Authorization!!
+                            <a href="/Home/Index">  -->  Home Page</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

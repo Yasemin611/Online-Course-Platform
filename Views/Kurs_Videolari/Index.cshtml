@@ -1,0 +1,45 @@
+﻿@using WebApplication2.Models;
+@model List<Kurs_Videolari>
+@{
+    ViewBag.Title = "Videos of Courses";
+}
+<div class="jumbotron">
+
+</div>
+<h2>Videos of Courses</h2>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="sparkline12-list mg-b-30">
+        <div class="sparkline12-hd">
+            <div class="main-sparkline12-hd">
+                <h1>Hover Table</h1>
+            </div>
+        </div>
+        <div class="sparkline12-graph">
+            <div class="static-table-list">
+                <table class="table hover-table">
+                    <thead>
+                        <tr>
+                            <th>Course ID</th>
+                            <th>Course Name</th>
+                            <th>Video ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.kursID</td>
+                                <td>@item.kursAdi</td>
+                                @*<td>@item.videoID</td>*@
+                                <td><a href="/Kurs_Videolari/kursVideo">@item.videoID</a></td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

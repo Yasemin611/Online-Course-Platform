@@ -1,0 +1,24 @@
+﻿@using WebApplication2.Models
+@model Video
+@{
+    ViewBag.Title = "videoSil";
+}
+
+<h2>videoSil</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block-heading">
+            <div class="main-txt h2"> OPERATIONS OF DELETING VIDEO </div>
+        </div>
+        <div class="block-content-outer">
+            <div class="block-content-inner">
+                <form action="/Video/videoSil" method="post">
+                    <input type="hidden" name="videoID" value="@Model.videoID" />
+                    <label> Delete video id = @Model.videoID ?</label>
+                    <input class="btn-danger rounded" type="submit" value="Yes" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

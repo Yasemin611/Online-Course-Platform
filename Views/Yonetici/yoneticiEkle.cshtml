@@ -1,0 +1,62 @@
+﻿@using WebApplication2.Models;
+@model List<Kurs_Programi_Yoneticisi>
+@{
+    ViewBag.Title = "yoneticiEkle";
+}
+
+<h2>yoneticiEkle</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    OPERATIONS OF ADDING ADMIN
+                </div>
+                <div class="block-controls">
+                    <a href="/Kurs_Programi_Yoneticisi/Index"></a>
+                    <span aria-hidden="true" class="icon icon-cross icon-size-medium block-control-remove"></span>
+                    <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+                </div>
+            </div>
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                    <form action="/Kurs_Programi_Yoneticisi/yoneticiEkle" method="post" role="form">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Admin Name</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Admin Name" name="yoneticiAdi">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Admin Surname</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Admin Surname" name="yoneticiSoyadi">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Admin Email</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Admin Email Address" name="yEmail">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Admin Telephone Number</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Admin Telephone Number" name="yTelNo">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Admin Password</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Admin Password" name="yPassword">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Authorization</label>
+                            <select class="form-control" name="userID">
+                                @foreach (Yetki item in ViewBag.yetki)
+                                {
+                                    <option value="@item.userID">@item.yetkiDurumu</option>
+                                }
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Admin</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

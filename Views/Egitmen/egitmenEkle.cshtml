@@ -1,0 +1,66 @@
+﻿@using WebApplication2.Models;
+@model List < Egitmen >
+@{
+    ViewBag.Title = "egitmenEkle";
+}
+
+<h2>egitmenEkle</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    OPERATIONS OF ADDING INSTRUCTOR
+                </div>
+                <div class="block-controls">
+                    <a href="/Egitmen/Index"></a>
+                    <span aria-hidden="true" class="icon icon-cross icon-size-medium block-control-remove"></span>
+                    <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+                </div>
+            </div>
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                    <form action="/Egitmen/egitmenEkle" method="post" role="form">
+                        @*<div class="form-group">
+                                <label for="exampleInputEmail1">Course ID</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Course ID" name="kursID">
+                            </div>*@
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Instructor Name</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Instructor Name" name="egitmenAdi">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Instructor Surname</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Instructor Surname" name="egitmenSoyadi">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Instructor Email</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Instructor Email Address" name="eEmail">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Instructor Telephone Number</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Instructor Telephone Number" name="eTelNo">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Instructor Password</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Instructor Password" name="ePassword">
+                        </div>
+
+
+                        @*<div class="form-group">
+                                <label for="exampleInputPassword1">Instructor</label>
+                                <select class="form-control" name="egitmenID">
+                                    @foreach (Egitmen item in ViewBag.egitmen)
+                                    {
+                                        <option value="@item.egitmenID">@item.egitmenAdi, @item.egitmenSoyadi</option>
+                                    }
+                                </select>
+                            </div>*@
+                        <button type="submit" class="btn btn-primary">Add Instructor</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
